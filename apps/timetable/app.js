@@ -4,12 +4,12 @@
 // except for 'app' ones, which are in a sibling
 // directory.
 requirejs.config({
-  baseUrl: 'scripts',
+  baseUrl: 'lib',
   paths: {
-    domain: '../domain'
+    app: '../app'
   }
 });
 
 // Start loading the main app file. Put all of
 // your application logic in there.
-requirejs(['domain/timetable']);
+requirejs(['app/main']);
