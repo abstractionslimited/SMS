@@ -1,3 +1,6 @@
+const Period = require('./period');
+const Schedule = require('./schedule');
+const SubjectColor = require('./subject-color');
 var config = {
   weekDays: [
     'Monday',
@@ -50,3 +53,5 @@ var config = {
     new SubjectColor('Music', '#ff8080')
   ]
 };
+
+export default config;

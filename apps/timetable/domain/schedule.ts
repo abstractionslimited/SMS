@@ -12,3 +12,4 @@ function Schedule(
   this.teacher = teacher;
   this.room = room;
 }
+export default Schedule;
