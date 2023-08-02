@@ -6,4 +6,4 @@
 ## timetable 
 
 - The time table microservice
-- scripts: back end code
+- app: src code
