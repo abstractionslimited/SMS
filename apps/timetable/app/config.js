@@ -2,7 +2,7 @@ define(function () {
   return {
     getConfigs: function () {
       return {
-        weekDays: [
+        weekdays: [
           'Monday',
           'Tuesday',
           'Wednesday',
