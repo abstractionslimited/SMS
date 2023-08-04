@@ -103,7 +103,21 @@ define(function () {
               { subject: '', room: '' }
             ]
           }
-        ]
+        ],
+
+        colors: {
+          History: '#552200',
+          Biology: '#337732',
+          German: '#0055AA',
+          English: '#FF8800',
+          'Computer Science': '#447777',
+          Maths: '#009922',
+          Music: '#DD2222',
+          Physics: '#0088FF',
+          Religion: '#AA00DD',
+          Geography: '#FFCC00',
+          Sport: '#222222'
+        }
       };
     }
   };

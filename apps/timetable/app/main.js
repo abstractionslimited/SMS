@@ -8,11 +8,29 @@ define(function (require) {
       fill: function (dayNumber) {
         var routine = document.querySelectorAll('.routine-schedule');
         var timetable = config.getConfigs().timetable;
+        var colors = config.getConfigs().colors;
         var schedule = timetable[dayNumber].schedule;
 
         for (let period = 0; period < schedule.length; period++) {
-          const subjectName = schedule[period].room;
-          console.log(subjectName);
+          const subjectRoom = schedule[period].room;
+          const subjectName = schedule[period].subject;
+          var subjectColor = colors[subjectName];
+
+          routinePeriod = routine[period].querySelector('.period-content');
+
+          let routinePeriodColor = routinePeriod.style.color;
+
+          if (subjectName) {
+            if (typeof subjectColor != undefined) {
+              routinePeriod.style.color = subjectColor;
+              console.log(routinePeriod);
+            } else {
+              routinePeriod = '#000';
+            }
+          }
+
+          routinePeriod.querySelectorAll('div')[0].innerText = subjectName;
+          routinePeriod.querySelectorAll('div')[1].innerText = '';
         }
       }
     },
@@ -64,7 +82,7 @@ define(function (require) {
       container.setAttribute('class', 'routine-schedule');
       container.classList.add('hidden');
       container.style.transitionDelay = i * 0.025 + 's';
-      container.style.backgroundColor = 'red';
+      // container.style.backgroundColor = 'red';
 
       periodElement.setAttribute('class', 'period-element');
       contentElement.setAttribute('class', 'period-content');
@@ -98,9 +116,10 @@ define(function (require) {
   }
 
   (function renderTimetable(params) {
-    console.info('Building Timetable');
+    console.info('Initializing table Timetable');
     createHeaderButtons();
     renderPeriodsContainer();
+    console.info('Timetable built successfully.');
   })();
 });
 
