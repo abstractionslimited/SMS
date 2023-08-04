@@ -4,21 +4,40 @@ define(function (require) {
 
   var timetable = {
     currentlyShowDayNumber: 0,
+    routineElement: {
+      fill: function (dayNumber) {
+        var routine = document.querySelectorAll('.routine-schedule');
+        var timetable = config.getConfigs().timetable;
+        var schedule = timetable[dayNumber].schedule;
 
+        for (let period = 0; period < schedule.length; period++) {
+          const subjectName = schedule[period].room;
+          console.log(subjectName);
+        }
+      }
+    },
     showDayView: function (dayNumber) {
-      console.log('Show day view', dayNumber);
+      this.currentlyShowDayNumber = dayNumber;
+      this.routineElement.fill(dayNumber);
     }
   };
 
   function createHeaderButtons(params) {
     var counter = 0;
     var header = document.getElementsByTagName('header')[0];
+    var timetableData = config.getConfigs().timetable;
 
-    for (const weekday of configs.weekdays) {
+    for (const entry of timetableData) {
       let newButton = document.createElement('button');
-      newButton.innerText = weekday;
+      newButton.innerText = entry.day;
       newButton.setAttribute('data-dayNumber', counter);
+      addClickListenerToButton(newButton, timetable);
 
+      header.append(newButton);
+      counter++;
+    }
+
+    function addClickListenerToButton(newButton, timetable) {
       newButton.addEventListener('click', function (e) {
         var headerButtons = document.querySelectorAll('header > button');
 
@@ -26,12 +45,11 @@ define(function (require) {
           button.classList.remove('open');
         }
 
-        // e.target.classList.add('open');
-        timetable.showDayView(e.target.getAttribute('day-dayNumber'));
+        e.target.classList.add('open');
+        console.log(e.target.getAttribute('data-dayNumber'));
+        const dayNumber = e.target.getAttribute('data-dayNumber');
+        timetable.showDayView(dayNumber);
       });
-
-      header.append(newButton);
-      counter++;
     }
   }
 
@@ -46,6 +64,7 @@ define(function (require) {
       container.setAttribute('class', 'routine-schedule');
       container.classList.add('hidden');
       container.style.transitionDelay = i * 0.025 + 's';
+      container.style.backgroundColor = 'red';
 
       periodElement.setAttribute('class', 'period-element');
       contentElement.setAttribute('class', 'period-content');
@@ -79,9 +98,9 @@ define(function (require) {
   }
 
   (function renderTimetable(params) {
+    console.info('Building Timetable');
     createHeaderButtons();
     renderPeriodsContainer();
-    console.log('timetable rendered..');
   })();
 });
 

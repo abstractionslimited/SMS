@@ -22,6 +22,87 @@ define(function () {
           { start: '14:00', end: '14:45' },
           { start: '14:45', end: '15:30' },
           { start: '15:30', end: '16:15' }
+        ],
+        timetable: [
+          {
+            day: 'Monday',
+            schedule: [
+              { subject: 'Physics', room: 321 },
+              { subject: 'Geography', room: 304 },
+              { subject: 'German', room: 329 },
+              { subject: 'History', room: 304 },
+              { subject: 'Biology', room: 113 },
+              { subject: 'Computer Science', room: 312 },
+              { subject: '', room: '' },
+              { subject: 'Maths', room: 329 },
+              { subject: 'Music', room: 211 },
+              { subject: '', room: '' }
+            ]
+          },
+
+          {
+            day: 'Tuesday',
+            schedule: [
+              { subject: 'Computer Science', room: 312 },
+              { subject: 'German', room: 208 },
+              { subject: 'Maths', room: 207 },
+              { subject: '', room: '' },
+              { subject: 'English', room: 222 },
+              { subject: 'English', room: 222 },
+              { subject: 'Music', room: 211 },
+              { subject: '', room: '' },
+              { subject: '', room: '' },
+              { subject: '', room: '' }
+            ]
+          },
+
+          {
+            day: 'Wednesday',
+            schedule: [
+              { subject: 'Geography', room: 306 },
+              { subject: 'Religion', room: 209 },
+              { subject: 'English', room: 203 },
+              { subject: 'Maths', room: 111 },
+              { subject: 'Biology', room: 113 },
+              { subject: 'Physics', room: 321 },
+              { subject: '', room: '' },
+              { subject: '', room: '' },
+              { subject: '', room: '' },
+              { subject: '', room: '' }
+            ]
+          },
+
+          {
+            day: 'Thursday',
+            schedule: [
+              { subject: 'Physics', room: 321 },
+              { subject: 'History', room: 304 },
+              { subject: 'Computer Science', room: 312 },
+              { subject: 'Computer Science', room: 312 },
+              { subject: 'English', room: 312 },
+              { subject: '', room: '' },
+              { subject: 'Music', room: 214 },
+              { subject: 'Religion', room: 315 },
+              { subject: '', room: '' },
+              { subject: '', room: '' }
+            ]
+          },
+
+          {
+            day: 'Friday',
+            schedule: [
+              { subject: 'Physics', room: 321 },
+              { subject: 'Physics', room: 321 },
+              { subject: 'German', room: 206 },
+              { subject: 'Biology', room: 113 },
+              { subject: 'Computer Science', room: 216 },
+              { subject: 'English', room: 217 },
+              { subject: 'Sport', room: 'SHG' },
+              { subject: 'Sport', room: 'SHG' },
+              { subject: '', room: '' },
+              { subject: '', room: '' }
+            ]
+          }
         ]
       };
     }
