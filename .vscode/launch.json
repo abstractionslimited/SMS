@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "file:///Users/khanyakupelo/Desktop/WORK/Abstractions%20Limited/SMS/apps/timetable/timetable.html",
+            "url": "http://127.0.0.1:5502/apps/timetable/timetable.html",
             "webRoot": "${workspaceFolder}"
         }
     ]

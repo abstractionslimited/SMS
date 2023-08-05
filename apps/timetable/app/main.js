@@ -27,16 +27,39 @@ define(function (require) {
             } else {
               routinePeriod = '#000';
             }
+            routinePeriod.querySelectorAll('div')[0].innerText = subjectName;
+            routinePeriod.querySelectorAll('div')[1].innerText = subjectRoom;
+          } else {
+            routinePeriod.querySelectorAll('div')[0].innerText = 'Free Period';
+            routinePeriod.querySelectorAll('div')[1].innerText = 'Free Period';
           }
+        }
+      },
 
-          routinePeriod.querySelectorAll('div')[0].innerText = subjectName;
-          routinePeriod.querySelectorAll('div')[1].innerText = '';
+      show: function () {
+        // Get elements with matching tags
+        let elements = document.querySelectorAll('.routine-schedule');
+        for (const element of elements) {
+          element.classList.remove('hidden');
+        }
+      },
+
+      hide: function (params) {
+        // Get elements with matching tags
+        let elements = document.querySelectorAll('.routine-schedule');
+        for (const element of elements) {
+          element.classList.remove('hidden');
         }
       }
     },
     showDayView: function (dayNumber) {
       this.currentlyShowDayNumber = dayNumber;
-      this.routineElement.fill(dayNumber);
+      this.routineElement.hide();
+
+      setTimeout(function () {
+        timetable.routineElement.fill(dayNumber);
+        timetable.routineElement.show();
+      }, 0);
     }
   };
 
