@@ -2,66 +2,7 @@ define(function (require) {
   const config = require('./config');
   const configs = config.getConfigs();
 
-  var timetable = {
-    currentlyShowDayNumber: 0,
-    routineElement: {
-      fill: function (dayNumber) {
-        var routine = document.querySelectorAll('.routine-schedule');
-        var timetable = config.getConfigs().timetable;
-        var colors = config.getConfigs().colors;
-        var schedule = timetable[dayNumber].schedule;
-
-        for (let period = 0; period < schedule.length; period++) {
-          const subjectRoom = schedule[period].room;
-          const subjectName = schedule[period].subject;
-          var subjectColor = colors[subjectName];
-
-          routinePeriod = routine[period].querySelector('.period-content');
-
-          let routinePeriodColor = routinePeriod.style.color;
-
-          if (subjectName) {
-            if (typeof subjectColor != undefined) {
-              routinePeriod.style.color = subjectColor;
-              console.log(routinePeriod);
-            } else {
-              routinePeriod = '#000';
-            }
-            routinePeriod.querySelectorAll('div')[0].innerText = subjectName;
-            routinePeriod.querySelectorAll('div')[1].innerText = subjectRoom;
-          } else {
-            routinePeriod.querySelectorAll('div')[0].innerText = 'Free Period';
-            routinePeriod.querySelectorAll('div')[1].innerText = 'Free Period';
-          }
-        }
-      },
-
-      show: function () {
-        // Get elements with matching tags
-        let elements = document.querySelectorAll('.routine-schedule');
-        for (const element of elements) {
-          element.classList.remove('hidden');
-        }
-      },
-
-      hide: function (params) {
-        // Get elements with matching tags
-        let elements = document.querySelectorAll('.routine-schedule');
-        for (const element of elements) {
-          element.classList.remove('hidden');
-        }
-      }
-    },
-    showDayView: function (dayNumber) {
-      this.currentlyShowDayNumber = dayNumber;
-      this.routineElement.hide();
-
-      setTimeout(function () {
-        timetable.routineElement.fill(dayNumber);
-        timetable.routineElement.show();
-      }, 0);
-    }
-  };
+  var timetable = createTimetable(config, timetable);
 
   function createHeaderButtons(params) {
     var counter = 0;
@@ -141,6 +82,7 @@ define(function (require) {
   (function renderTimetable(params) {
     console.info('Initializing table Timetable');
     createHeaderButtons();
+    timetable.showCurrentDay();
     renderPeriodsContainer();
     console.info('Timetable built successfully.');
   })();
@@ -150,3 +92,81 @@ window.onload = function () {
   console.log('timetable app loaded');
   // renderTimetable();
 };
+function createTimetable(config, timetable) {
+  return {
+    currentlyShowDayNumber: 0,
+    routineElement: {
+      fill: function (dayNumber) {
+        var routine = document.querySelectorAll('.routine-schedule');
+        var timetable = config.getConfigs().timetable;
+        var colors = config.getConfigs().colors;
+        var schedule = timetable[dayNumber].schedule;
+
+        for (let period = 0; period < schedule.length; period++) {
+          const subjectRoom = schedule[period].room;
+          const subjectName = schedule[period].subject;
+          var subjectColor = colors[subjectName];
+
+          routinePeriod = routine[period].querySelector('.period-content');
+
+          let routinePeriodColor = routinePeriod.style.color;
+
+          if (subjectName) {
+            if (typeof subjectColor != undefined) {
+              routinePeriod.style.color = subjectColor;
+            } else {
+              routinePeriod = '#000';
+            }
+            routinePeriod.querySelectorAll('div')[0].innerText = subjectName;
+            routinePeriod.querySelectorAll('div')[1].innerText = subjectRoom;
+          } else {
+            routinePeriod.querySelectorAll('div')[0].innerText = 'Free Period';
+            routinePeriod.querySelectorAll('div')[1].innerText = 'Free Period';
+          }
+        }
+      },
+
+      show: function () {
+        // Get elements with matching tags
+        let elements = document.querySelectorAll('.routine-schedule');
+        for (const element of elements) {
+          element.classList.remove('hidden');
+        }
+      },
+
+      hide: function (params) {
+        // Get elements with matching tags
+        let elements = document.querySelectorAll('.routine-schedule');
+        for (const element of elements) {
+          element.classList.remove('hidden');
+        }
+      }
+    },
+    showDayView: function (dayNumber) {
+      this.currentlyShowDayNumber = dayNumber;
+      this.routineElement.hide();
+
+      setTimeout(function () {
+        timetable.routineElement.fill(dayNumber);
+        timetable.routineElement.show();
+      }, 0);
+    },
+
+    showCurrentDay: function () {
+      const date = new Date();
+      console.log('date ', date);
+      const day = date.getDay();
+      const dayNumber = day != 0 ? day - 1 : 6;
+      var timetableData = config.getConfigs().timetable;
+      var headerButtons = document.querySelectorAll('header>button');
+
+      if (dayNumber >= timetableData.length) {
+        headerButtons[0].classList.add('open');
+        timetable.showDayView(0);
+      } else {
+        headerButtons[dayNumber].classList.add('open');
+        timetable.showDayView(dayNumber);
+      }
+    }
+  };
+}
