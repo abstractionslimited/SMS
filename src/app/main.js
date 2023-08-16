@@ -1,7 +1,7 @@
 // import config from '../domain/config';
 
 // main.js
-export function Hello() {
+function bye() {
   console.log('hello');
 }
 
