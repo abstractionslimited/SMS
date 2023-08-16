@@ -2,12 +2,14 @@
   "name": "sms",
   "version": "1.0.0",
   "description": "<https://lime-vest-35a.notion.site/Software-Architecture-9bd77dff6f854d5d993a28913ac13ad7>",
-  "main": "webpack.config.js",
+  "main": "index.js",
+  "type": "module",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-start": "npm run start"
   },
   "repository": {
     "type": "git",
