@@ -1,4 +1,4 @@
-import { getConfigs } from './config.js';
+import { getConfigs } from '../infrastructure/config.js';
 
 // USE cases for timetable object:
 export var timetable = {

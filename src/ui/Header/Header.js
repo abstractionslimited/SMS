@@ -1,4 +1,4 @@
-import { getConfigs } from '../../domain/config.js';
+import { getConfigs } from '../../infrastructure/config.js';
 import { timetable } from '../../domain/timetable.js';
 
 export function CreateHeader() {

@@ -1,4 +1,4 @@
-import { getConfigs } from '../../domain/config.js';
+import { getConfigs } from '../../infrastructure/config.js';
 
 export function createPeriods(params) {
   var i = 0;
