@@ -1,4 +1,4 @@
-import { timetable } from './application/timetable/timetable.js';
+import { timetable } from './domain/timetable.js';
 import { CreateHeader } from './ui/Header/Header.js';
 import { createPeriods } from './ui/Periods/Periods.js';
 

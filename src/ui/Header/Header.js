@@ -1,5 +1,5 @@
 import { getConfigs } from '../../domain/config.js';
-import { timetable } from '../../application/timetable/timetable.js';
+import { timetable } from '../../domain/timetable.js';
 
 export function CreateHeader() {
   var counter = 0;
