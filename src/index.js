@@ -1,6 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App.tsx';
+import { timetable } from './application/timetable/timetable.js';
+import { CreateHeader } from './ui/Header/Header.js';
+import { createPeriods } from './ui/Periods/Periods.js';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+window.onload = () => {
+    const root = document.getElementById('timetable');
+    CreateHeader(root);
+    createPeriods();
+    timetable.showCurrentDay();
+    console.log(timetable);
+};
