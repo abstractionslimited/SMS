@@ -1,14 +1,4 @@
 function generateTable(params) {
-
-
-    let mountains = [
-        { name: "Monte Falco", height: 1658, place: "Parco Foreste Casentinesi" },
-        { name: "Monte Falterona", height: 1654, place: "Parco Foreste Casentinesi" },
-        { name: "Poggio Scali", height: 1520, place: "Parco Foreste Casentinesi" },
-        { name: "Pratomagno", height: 1592, place: "Parco Foreste Casentinesi" },
-        { name: "Monte Amiata", height: 1738, place: "Siena" }
-    ];
-
     let timetableData = [
         {
             Period: '08:00',
@@ -74,6 +64,7 @@ function generateTableHead(table, data) {
     var row = thead.insertRow();
     for (const key of data) {
         let th = document.createElement("th");
+        th.classList.add('days');
         let text = document.createTextNode(key);
         th.appendChild(text);
         row.appendChild(th);
